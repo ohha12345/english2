@@ -52,7 +52,7 @@
     height: 40px;
     text-align: center;
     border: 2px solid #aaa;
-    margin: 6px;
+    margin: 5px;
     line-height: 40px;
     cursor: pointer;
     transition: .3s;
@@ -67,9 +67,9 @@
 
 <body>
   <div id="audioDiv">
-  	<h2>播放編號 <i>001</i></h2>
+  	<h2>片語 <i>01</i></h2>
     <audio id="audio" controls>
-      <source id="source" src="voice/001.mp3">
+      <source id="source" src="voice2/01.mp3">
     </audio>
   </div>
   <div id="menu">
@@ -83,12 +83,10 @@ $(function() {
   var $menu = $('#menu');
   var name;
 
-  for (var i = 1; i <= 143; i++) {
+  for (var i = 1; i <= 52; i++) {
     if (i < 10) {
-      name = '00' + i;
-    } else if (i >= 10 && i < 100) {
       name = '0' + i;
-    } else {
+    }else {
       name = i;
     }
     $menu.append('<div class="' + name + '">' + name + '</div>');
@@ -98,7 +96,7 @@ $(function() {
   $btn.on('click', function() {
   	$btn.css({'background':'none'});
     console.log(this.className);
-    $source.attr('src', 'voice/' + this.className + '.mp3');
+    $source.attr('src', 'voice2/' + this.className + '.mp3');
     $(this).css({'background':'#ccc'});
     $num.text(this.className);
     if($audio[0].paused){
