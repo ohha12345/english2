@@ -17,7 +17,7 @@
     background:#000;
     margin-bottom:10px;
     box-sizing: border-box;
-    padding-top:15px;
+    padding:15px 0 0;
     position: fixed;
     box-shadow: rgba(0,0,0,.3) 0 2px 5px;
   }
@@ -67,9 +67,9 @@
 
 <body>
   <div id="audioDiv">
-  	<h2>片語 <i>01</i></h2>
+  	<h2>手繪旅遊英文 <i>01</i></h2>
     <audio id="audio" controls>
-      <source id="source" src="voice2/01.mp3">
+      <source id="source" src="voice3/001.mp3">
     </audio>
   </div>
   <div id="menu">
@@ -83,22 +83,24 @@ $(function() {
   var $menu = $('#menu');
   var name;
 
-  for (var i = 1; i <= 52; i++) {
+  for (var i = 1; i <= 104; i++) {
     if (i < 10) {
+      name = '00' + i;
+    }else if(i>10 && i<99){
       name = '0' + i;
     }else {
       name = i;
     }
-    $menu.append('<div class="' + name + '">' + name + '</div>');
+    $menu.append('<div class="' + name + '">' + i + '</div>');
   }
 
   var $btn = $('#menu div');
   $btn.on('click', function() {
   	$btn.css({'background':'none'});
     console.log(this.className);
-    $source.attr('src', 'voice2/' + this.className + '.mp3');
+    $source.attr('src', 'voice3/' + this.className + '.mp3');
     $(this).css({'background':'#ccc'});
-    $num.text(this.className);
+    $num.text($(this).text());
     if($audio[0].paused){
     	console.log(1);
     	$audio.load();
